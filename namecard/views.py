@@ -24,8 +24,8 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
-        namecard_list = Namecard.object.filter(Q(title__icontains=searchWord) | Q(description__icontains=searchWord) | Q(
-            content__icontains=searchWord)).distinct()
+        namecard_list = Namecard.objects.filter(Q(name__icontains=searchWord) | Q(tel__icontains=searchWord) | Q(
+            group__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form
