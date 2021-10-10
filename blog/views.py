@@ -1,15 +1,16 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, TemplateView #6장에서 TemplateView추가
+from django.views.generic import ListView, DetailView, TemplateView  # 6장에서 TemplateView추가
 from django.views.generic import ArchiveIndexView, YearArchiveView, MonthArchiveView
 from django.views.generic import DayArchiveView, TodayArchiveView
 from blog.models import Post
-from django.conf import settings    #7장을 위해 추가
+from django.conf import settings  # 7장을 위해 추가
 
-from blog.forms import PostSearchForm  #8장을 위해 추가
-from django.db.models import Q         #8장을 위해 추가
-from django.shortcuts import render    #8장을 위해 추가
-from django.views.generic import FormView #8장을 위해 추가
-from django.views.generic import View #8장을 위해 추가
+from blog.forms import PostSearchForm  # 8장을 위해 추가
+from django.db.models import Q  # 8장을 위해 추가
+from django.shortcuts import render  # 8장을 위해 추가
+from django.views.generic import FormView  # 8장을 위해 추가
+from django.views.generic import View  # 8장을 위해 추가
+
 
 # from blog.forms import PostSearchTestForm  #Test를 위해 추가
 
@@ -20,6 +21,7 @@ class PostLV(ListView):
     template_name = 'blog/post_all.html'
     context_object_name = 'posts'
     paginate_by = 2
+
 
 class PostDV(DetailView):
     model = Post
@@ -33,29 +35,35 @@ class PostDV(DetailView):
         context['disqus_title'] = f"{self.object.slug}"
         return context
 
+
 class PostAV(ArchiveIndexView):
     model = Post
     date_field = 'modify_dt'
+
 
 class PostYAV(YearArchiveView):
     model = Post
     date_field = 'modify_dt'
     make_object_list = True
 
+
 class PostMAV(MonthArchiveView):
     model = Post
     date_field = 'modify_dt'
+
 
 class PostDAV(DayArchiveView):
     model = Post
     date_field = 'modify_dt'
 
+
 class PostTAV(TodayArchiveView):
     model = Post
     date_field = 'modify_dt'
 
+
 # Create your views here.
-#--- Tag View   6장에서 추가
+# --- Tag View   6장에서 추가
 class TagCloudTV(TemplateView):
     template_name = 'taggit/taggit_cloud.html'
 
@@ -72,41 +80,42 @@ class TaggedObjectLV(ListView):
         context['tagname'] = self.kwargs['tag']
         return context
 
-#--- FormView   8장
+
+# --- FormView   8장
 
 class SearchFormView(FormView):
     form_class = PostSearchForm
     template_name = 'blog/post_search.html'
 
-
     def get(self, request, *args, **kwargs):
-        #Handle GET requests: instantiate a blank version of the form.
+        # Handle GET requests: instantiate a blank version of the form.
         print("get get test")
         context = super().get_context_data(**kwargs)
 
         post_list = Post.objects.all()
 
-        #context['form'] = self.form_class
-        #context['search_term'] = searchWord
+        # context['form'] = self.form_class
+        # context['search_term'] = searchWord
         context['object_list'] = post_list
 
-        #return self.render_to_response(self.get_context_data())
+        # return self.render_to_response(self.get_context_data())
         return self.render_to_response(context)
-        #return render(self.request, self.template_name, context)
-
+        # return render(self.request, self.template_name, context)
 
     def form_valid(self, form):
         print(form)
         searchWord = form.cleaned_data['search_word']
         print("post test")
-        post_list = Post.objects.filter(Q(title__icontains=searchWord) |  Q(description__icontains=searchWord) | Q(content__icontains=searchWord)).distinct()
+        post_list = Post.objects.filter(Q(title__icontains=searchWord) | Q(description__icontains=searchWord) | Q(
+            content__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form
         context['search_term'] = searchWord
         context['object_list'] = post_list
 
-        return render(self.request, self.template_name, context)   # No Redirection
+        return render(self.request, self.template_name, context)  # No Redirection
+
 
 """
 #--- FormView   Test
@@ -140,4 +149,3 @@ class SearchFormViewTest(FormView):
         return render(self.request, self.template_name, context)   # No Redirection
         
 """
-
