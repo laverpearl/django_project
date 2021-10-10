@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}phone_detail.html{% endblock %}
+
+{% block content %}
+
+    <h1>{{ object.title }}</h1>
+    <ul>
+        <li>PHONENUM : <a href="{{ object.phonenum }}">{{ object.phonenum }}</a></li>
+    </ul>
+
+{% endblock %}
+
+
