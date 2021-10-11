@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -9,6 +10,7 @@ class Namecard(models.Model):
     company = models.CharField('COMPANY', max_length=50, blank=True)
     email = models.EmailField('EMAIL', max_length=50, blank=True)
     group = models.CharField('Group', max_length=50, blank=True)
+
     """
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
@@ -20,3 +22,6 @@ class Namecard(models.Model):
 
     class Meta:
         ordering = ('group', 'name',)
+
+    def get_absolute_url(self):
+        return reverse('namecard:namecard_detail', args=(self.name,))
