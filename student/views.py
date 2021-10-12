@@ -24,7 +24,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
-        student_list = Student.objects.filter(Q(name__icontains=searchWord) | Q(tel__icontains=searchWord) | Q(
+        student_list = Student.objects.filter(Q(name__icontains=searchWord) | Q(department__icontains=searchWord) | Q(
             studentnum__icontains=searchWord)).distinct()
 
         context = {}
