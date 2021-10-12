@@ -11,7 +11,7 @@ class Bookmark(models.Model):
         return self.title
 
     class Meta:
-        ordering = ('id', 'url', )
+        ordering = ('url',)
 
     def get_absolute_url(self):
         return reverse('bookmark:bookmark_detail', args=(self.url,))
