@@ -13,12 +13,10 @@
 <br/><br/>
 {% if object_list %}
 {% for namecard in object_list %}
-<h2><a href="{{ namecard.get_absolute_url }}">{{ namecard.name }}</a></h2>
-{{ namecard.modify_dt|date:"N d, Y" }}
+<h2><a href="{% url 'namecard:detail' namecard.id %}">{{ namecard }}</a></h2>
 <p>{{ namecard.description }}</p>
 {% endfor %}
 {% elif search_term %}
 <b><i>Search Word({{ search_term }}) Not Found!</i></b>
 {% endif %}
-
 {% endblock %}
