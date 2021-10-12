@@ -8,7 +8,5 @@ urlpatterns = [
     path('', NamecardLV.as_view(), name='index'),
     path('<int:pk>/', NamecardDV.as_view(), name='detail'),
     path('search/', views.SearchFormView.as_view(), name='search'),
-    re_path(r'^(?P<name>[-\w]+)/$', views.NamecardDV.as_view(), name='namecard_detail'),
-
 ]
 
