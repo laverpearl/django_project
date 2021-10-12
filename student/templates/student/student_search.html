@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}student_search.html{% endblock %}
+
+{% block extra-style %}
+
+<h1>Student Search</h1>
+<br>
+<form action="." method="post"> {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+</form>
+<br/><br/>
+{% if object_list %}
+{% for student in object_list %}
+<h2><a href="{% url 'student:detail' student.id %}">{{ student }}</a></h2>
+<p>{{ student.description }}</p>
+{% endfor %}
+{% elif search_term %}
+<b><i>Search Word({{ search_term }}) Not Found!</i></b>
+{% endif %}
+{% endblock %}

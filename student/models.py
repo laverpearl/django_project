@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -13,3 +14,9 @@ class Student(models.Model):
 
     def __str__(self):
         return self.studentnum
+
+    class Meta:
+        ordering = ('tel', 'name',)
+
+    def get_absolute_url(self):
+        return reverse('student:student_detail', args=(self.name,))
