@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -8,4 +9,10 @@ class Bookmark(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ('id', 'url', )
+
+    def get_absolute_url(self):
+        return reverse('bookmark:bookmark_detail', args=(self.url,))
 
