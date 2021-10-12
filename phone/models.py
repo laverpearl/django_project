@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -9,3 +10,9 @@ class Phone(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name', 'phonenum',)
+
+    def get_absolute_url(self):
+        return reverse('phone:phone_detail', args=(self.name,))

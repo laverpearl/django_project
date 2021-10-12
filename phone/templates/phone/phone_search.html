@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}phone_search.html{% endblock %}
+
+{% block extra-style %}
+
+<h1>Phone Search</h1>
+<br>
+<form action="." method="post"> {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+</form>
+<br/><br/>
+{% if object_list %}
+{% for phone in object_list %}
+<h2><a href="{% url 'phone:detail' phone.id %}">{{ phone }}</a></h2>
+<p>{{ phone.description }}</p>
+{% endfor %}
+{% elif search_term %}
+<b><i>Search Word({{ search_term }}) Not Found!</i></b>
+{% endif %}
+{% endblock %}

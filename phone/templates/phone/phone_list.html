@@ -8,7 +8,7 @@
     <h1>Phone List</h1>
     <ul>
         {% for phone in object_list %}
-        <li><a href="{% url 'phone:phonedetail' phone.id %}">{{ phone }}</a></li>
+        <li><a href="{% url 'phone:detail' phone.id %}">{{ phone }}</a></li>
         {% endfor %}
     </ul>
 </div>
