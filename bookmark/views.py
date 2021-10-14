@@ -24,8 +24,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
-        bookmark_list = Bookmark.objects.filter(Q(id__icontains=searchWord) | Q(title__icontains=searchWord) | Q(
-            url__icontains=searchWord)).distinct()
+        bookmark_list = Bookmark.objects.filter(Q(title__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form
