@@ -12,7 +12,7 @@ from django.views.generic import FormView  # 8장을 위해 추가
 from django.views.generic import View  # 8장을 위해 추가
 # from blog.forms import PostSearchTestForm  #Test를 위해 추가
 
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
@@ -143,7 +143,7 @@ class PostUpdateView(OwnerOnlyMixin, UpdateView):
     success_url = reverse_lazy('blog:index')
 
 
-class PostDeleteView(OwnerOnlyMixin, DetailView):
+class PostDeleteView(OwnerOnlyMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:index')
 
