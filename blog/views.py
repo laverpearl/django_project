@@ -10,11 +10,13 @@ from django.db.models import Q  # 8장을 위해 추가
 from django.shortcuts import render  # 8장을 위해 추가
 from django.views.generic import FormView  # 8장을 위해 추가
 from django.views.generic import View  # 8장을 위해 추가
-
-
 # from blog.forms import PostSearchTestForm  #Test를 위해 추가
 
-# Create your views here.
+from django.views.generic import CreateView, UpdateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from mysite.views import OwnerOnlyMixin
+
 
 class PostLV(ListView):
     model = Post
@@ -115,6 +117,35 @@ class SearchFormView(FormView):
         context['object_list'] = post_list
 
         return render(self.request, self.template_name, context)  # No Redirection
+
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'slug', 'description', 'content']
+    initial = {'slug': 'auto-filling-do-not-input'}
+    success_url = reverse_lazy('blog:index')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class PostChangeLV(LoginRequiredMixin, ListView):
+    template_name = 'blog/post_change_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(owner=self.request.user)
+
+
+class PostUpdateView(OwnerOnlyMixin, UpdateView):
+    model = Post
+    fields = ['title', 'slug', 'description', 'content']
+    success_url = reverse_lazy('blog:index')
+
+
+class PostDeleteView(OwnerOnlyMixin, DetailView):
+    model = Post
+    success_url = reverse_lazy('blog:index')
 
 
 """
