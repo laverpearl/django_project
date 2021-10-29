@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -10,6 +11,8 @@ class Namecard(models.Model):
     company = models.CharField('COMPANY', max_length=50, blank=True)
     email = models.EmailField('EMAIL', max_length=50, blank=True)
     group = models.CharField('Group', max_length=50, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
 
     """
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
