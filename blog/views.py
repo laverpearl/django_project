@@ -22,7 +22,7 @@ class PostLV(ListView):
     model = Post
     template_name = 'blog/post_all.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 4 #글 목록 4개로 수정
 
 
 class PostDV(DetailView):

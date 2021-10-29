@@ -8,6 +8,8 @@ urlpatterns = [
 
     path('post/', views.PostLV.as_view(), name='post_list'),
 
+    # path('?page/', views.PostLV.as_view(), name='page_list'), #nextpage오류로 추가한부분
+
     re_path(r'^post/(?P<slug>[-\w]+)/$', views.PostDV.as_view(), name='post_detail'),
 
     path('archive/', views.PostAV.as_view(), name='post_archive'),
