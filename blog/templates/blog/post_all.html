@@ -8,7 +8,7 @@
 <br>
 
 {% for post in posts %}
-    <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a> </h3>
+    <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></h3>
     {{ post.modify_dt|date:"N d, Y" }}
     <p>{{ post.description }}</p>
 {% endfor %}
@@ -27,7 +27,6 @@
             <a href="?Page={{ page_obj.next_page_number }}">NextPage</a>
         {% endif %}
     </span>
-
 </div>
 
 {% endblock %}
