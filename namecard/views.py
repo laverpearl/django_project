@@ -10,7 +10,6 @@ from mysite.views import OwnerOnlyMixin
 from django.views.generic import FormView
 from namecard.forms import NamecardSearchForm
 from django.db.models import Q
-from django.shortcuts import render
 
 # Create your views here.
 
