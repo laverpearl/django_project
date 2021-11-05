@@ -9,6 +9,28 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from mysite.views import OwnerOnlyMixin
 from photo.forms import PhotoInlineFormSet
 
+from django.views.generic import FormView
+from photo.forms import PhotoSearchForm
+from django.db.models import Q
+
+
+#==================photo search 추가 =============================
+class SearchFormView(FormView):
+    form_class = PhotoSearchForm
+    template_name = 'photo/photo_search.html'
+
+    def form_valid(self, form):
+        searchWord = form.cleaned_data['search_word']
+        photo_list = Photo.objects.filter(Q(title__icontains=searchWord) | Q(description__icontains=searchWord)).distinct()
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = searchWord
+        context['object_list'] = photo_list
+
+        return render(self.request, self.template_name, context)  # No Redirection
+
+
 
 class AlbumLV(ListView):
     model = Album

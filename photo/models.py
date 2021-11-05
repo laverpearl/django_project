@@ -26,3 +26,12 @@ class Photo(models.Model):
     image = ThumbnailImageField('IMAGE', upload_to='photo/%Y/%m')
     upload_dt = models.DateTimeField('UPLOAD DATE', auto_now_add=True)
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name='OWNER', blank=True, null=True)
+    
+    class Meta:
+        ordering = ('title',)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('photo:photo_detail', args=(self.id,))

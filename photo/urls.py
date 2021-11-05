@@ -8,6 +8,7 @@ urlpatterns = [
     path('album', views.AlbumLV.as_view(), name='album_list'),
     path('album/<int:pk>/', views.AlbumDV.as_view(), name='album_detail'),
     path('photo/<int:pk>/', views.PhotoDV.as_view(), name='photo_detail'),
+    path('search/', views.SearchFormView.as_view(), name='search'),
 
     path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
     path('album/change/', views.AlbumChangeLV.as_view(), name='album_change'),
