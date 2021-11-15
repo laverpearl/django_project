@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     'photo.apps.PhotoConfig',
+    'sugang.apps.SugangConfig',
+    'gwamok.apps.GwamokConfig',
 
 ]
 
