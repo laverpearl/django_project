@@ -56,5 +56,6 @@ urlpatterns = [
                   path('namecard/', include('namecard.urls')),
                   path('student/', include('student.urls')),
                   path('photo/', include('photo.urls')),
+                  path('gwamok/', include('gwamok.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
