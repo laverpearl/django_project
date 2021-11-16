@@ -31,7 +31,7 @@ class SearchFormView(FormView):
         context = {}
         context['form'] = form
         context['search_term'] = searchWord
-        context['object_list'] = student_list
+        context['object_list'] = gwamok_list # 여기 수정
 
         return render(self.request, self.template_name, context)  # No Redirection
 
