@@ -38,7 +38,7 @@ class SearchFormView(FormView):
 
 class GwamokCreateView(LoginRequiredMixin, CreateView):
     model = Gwamok
-    fields = ['gawamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom', 'limitnum']
+    fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom', 'limitnum']
     success_url = reverse_lazy('gwamok:index')
 
     def form_valid(self, form):
