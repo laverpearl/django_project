@@ -18,7 +18,6 @@
             <th>Day</th>
             <th>Time</th>
             <th>Classroom</th>
-            <th>Limitnum</th>
             <th>Owner</th>
             <th>Update</th>
             <th>Delete</th>
@@ -35,7 +34,6 @@
             <td>{{ item.day }}</td>
             <td>{{ item.time }}</td>
             <td>{{ item.classroom }}</td>
-            <td>{{ item.limitnum }}</td>
             <td>{{ item.owner }}</td>
             <td><a href="{% url 'sugang:update' item.id %}">Update</a></td>
             <td><a href="{% url 'sugang:delete' item.id %}">Delete</a></td>

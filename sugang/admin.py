@@ -6,6 +6,6 @@ from sugang.models import Sugang
 
 @admin.register(Sugang)
 class SugangAdmin(admin.ModelAdmin):
-    list_display = ('gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom', 'limitnum')
+    list_display = ('gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom')
 
 
