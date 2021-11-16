@@ -24,7 +24,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
-        student_list = Sugang.objects.filter(Q(name__icontains=searchWord) | Q(professor__icontains=searchWord)).distinct()
+        sugang_list = Sugang.objects.filter(Q(name__icontains=searchWord) | Q(professor__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form

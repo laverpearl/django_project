@@ -26,7 +26,7 @@ class SearchFormView(FormView):
 
     def form_valid(self, form):
         searchWord = form.cleaned_data['search_word']
-        student_list = Gwamok.objects.filter(Q(name__icontains=searchWord) | Q(professor__icontains=searchWord)).distinct()
+        gwamok_list = Gwamok.objects.filter(Q(name__icontains=searchWord) | Q(professor__icontains=searchWord)).distinct()
 
         context = {}
         context['form'] = form
