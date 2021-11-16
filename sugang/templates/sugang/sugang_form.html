@@ -15,54 +15,13 @@
 </div>
 {% endif %}
 
-<form action="." method="post" class="card pt-3">{% csrf_token %}
-
+<form action="." method="post" class="card pt-3">
+    {% csrf_token %}
+    <!------------------------------------여기 수정하기 ------------------------------------->
     <div class="form-group row">
-        {{ form.gwamoknum|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.gwamoknum|add_class:"form-control"|attr:"autofocus" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.semester|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.semester|add_class:"form-control"|attr:"autofocus" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.name|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.name|add_class:"form-control" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.professor|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.professor|add_class:"form-control" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.day|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.day|add_class:"form-control" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.time|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.time|add_class:"form-control" }}
-        </div>
-    </div>
-
-    <div class="form-group row">
-        {{ form.classroom|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
-        <div class="col-sm-5">
-            {{ form.classroom|add_class:"form-control" }}
+        {{ form.gwamok|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+        <div class="col-sm-2">
+            {{ form.gwamok|add_class:"form-control" }}
         </div>
     </div>
 
