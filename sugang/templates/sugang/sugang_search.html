@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}sugang_search.html{% endblock %}
+
+{% block extra-style %}
+
+<h1>Sugang Search</h1>
+<br>
+<form action="." method="post"> {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+</form>
+<br/><br/>
+{% if object_list %}
+{% for sugang in object_list %}
+<h2><a href="{% url 'sugang:detail' sugang.id %}">{{ sugang }}</a></h2>
+<p>{{ sugang.description }}</p>
+{% endfor %}
+{% elif search_term %}
+<b><i>Search Word({{ search_term }}) Not Found!</i></b>
+{% endif %}
+{% endblock %}
