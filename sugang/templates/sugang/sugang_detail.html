@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}sugang_detail.html{% endblock %}
+
+{% block content %}
+
+        <h1>{{ object.name }}</h1>
+        <ul>
+            <li>과목번호 : <a href="{{ object.gwamoknum }}">{{ object.gwamoknum }}</a></li>
+            <li>학기구분 : <a href="{{ object.semester }}">{{ object.semester }}</a></li>
+            <li>과목명 : <a href="{{ object.name }}">{{ object.name }}</a></li>
+            <li>교수님 : <a href="{{ object.professor }}">{{ object.professor }}</a></li>
+            <li>요일 : <a href="{{ object.day }}">{{ object.day }}</a></li>
+            <li>시간 : <a href="{{ object.time }}">{{ object.time }}</a></li>
+            <li>강의실 : <a href="{{ object.classroom }}">{{ object.classroom }}</a></li>
+            <li>정원 : <a href="{{ object.limitnum }}">{{ object.limitnum }}</a></li>
+        </ul>
+
+{% endblock %}
+
