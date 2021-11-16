@@ -13,7 +13,7 @@
 <br/><br/>
 {% if object_list %}
 {% for sugang in object_list %}
-<h2><a href="{% url 'sugang:detail' sugang.id %}">{{ sugang }}</a></h2>
+<h2><a href="{% url 'sugang:detail' sugang.id %}">{{ sugang.name }}</a></h2>
 <p>{{ sugang.description }}</p>
 {% endfor %}
 {% elif search_term %}
