@@ -19,9 +19,9 @@
     {% csrf_token %}
     <!------------------------------------여기 수정하기 ------------------------------------->
     <div class="form-group row">
-        {{ form.gwamok|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
+        {{ form.name|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
         <div class="col-sm-2">
-            {{ form.gwamok|add_class:"form-control" }}
+            {{ form.name|add_class:"form-control" }}
         </div>
     </div>
 
