@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from student.models import Student
+from gwamok.models import Gwamok
 
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
 from django.views.generic import FormView
-from student.forms import StudentSearchForm
+from gwamok.forms import GwamokSearchForm
 from django.db.models import Q
 
 

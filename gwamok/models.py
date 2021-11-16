@@ -9,7 +9,7 @@ class Gwamok(models.Model):
     name = models.CharField('NAME', max_length=100, blank=False)
     professor = models.CharField('PROFESSOR', max_length=100, blank=False)
     day = models.CharField('DAY', max_length=50, blank=False)
-    Time = models.CharField('TIME', max_length=100, blank=False)
+    time = models.CharField('TIME', max_length=100, blank=False)
     classroom = models.CharField('CLASSROOM', max_length=100, blank=False)
     limitnum = models.CharField('LIMITNUM', max_length=100, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
