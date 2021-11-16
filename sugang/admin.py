@@ -1,5 +1,5 @@
 from django.contrib import admin
-from gwamok.models import Sugang
+from sugang.models import Sugang
 
 
 # Register your models here.
