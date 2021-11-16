@@ -9,6 +9,8 @@
         <ul>
             {% for gwamok in object_list %}
             <li><a href="{% url 'gwamok:detail' gwamok.id %}">{{ gwamok.name }}</a></li>
+            <p>{{ gwamok.semester }}</p>
+            <p>{{ gwamok.professor }}</p>
             {% endfor %}
         </ul>
     </div>

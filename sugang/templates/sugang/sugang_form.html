@@ -15,8 +15,13 @@
 </div>
 {% endif %}
 
+<!------------------------여기 추가---------------------------->
+{% if form.is_multipart %}
+<form enctype="multipart/form-data" action="" method="post" class="card pt-3">
+{% else %}
 <form action="." method="post" class="card pt-3">
-    {% csrf_token %}
+{% endif %}
+{% csrf_token %}
     <!------------------------------------여기 수정하기 ------------------------------------->
     <div class="form-group row">
         {{ form.name|add_label_class:"col-form-label col-sm-2 ml-3 font-weight-bold" }}
