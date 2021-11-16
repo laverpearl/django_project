@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}gwamok_change_list.html{% endblock %}
+
+{% block content %}
+
+<h1>Gwamok Change - {{user}} </h1>
+<br>
+
+<table class="table table-bordered table-condensed table-striped">
+
+    <thead>
+        <tr class="table-primary">
+            <th>Gwamoknum</th>
+            <th>Semester</th>
+            <th>Name</th>
+            <th>Professor</th>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Classroom</th>
+            <th>Limitnum</th>
+            <th>Owner</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in object_list %}
+        <tr>
+            <td>{{ item.gwamoknum }}</td>
+            <td>{{ item.semester }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.professor }}</td>
+            <td>{{ item.day }}</td>
+            <td>{{ item.time }}</td>
+            <td>{{ item.classroom }}</td>
+            <td>{{ item.limitnum }}</td>
+            <td>{{ item.owner }}</td>
+            <td><a href="{% url 'gwamok:update' item.id %}">Update</a></td>
+            <td><a href="{% url 'gwamok:delete' item.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
