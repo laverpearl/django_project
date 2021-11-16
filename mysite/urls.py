@@ -57,5 +57,6 @@ urlpatterns = [
                   path('student/', include('student.urls')),
                   path('photo/', include('photo.urls')),
                   path('gwamok/', include('gwamok.urls')),
+                  path('sugang/', include('sugang.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
