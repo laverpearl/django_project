@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from sugang.models import Sugang
+from gwamok.models import Gwamok
 
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -36,7 +37,8 @@ class SearchFormView(FormView):
 
 class SugangCreateView(LoginRequiredMixin, CreateView):
     model = Sugang
-    fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom']
+    # fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom']
+    fields = ['name']
     success_url = reverse_lazy('sugang:index')
 
     def form_valid(self, form):
