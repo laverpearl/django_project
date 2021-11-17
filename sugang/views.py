@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from sugang.models import Sugang
-from gwamok.models import Gwamok
+#from gwamok.models import Gwamok
 
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from mysite.views import OwnerOnlyMixin
+#from sugang.forms import SugangInlineFormSet
+
 from django.views.generic import FormView
 from sugang.forms import SugangSearchForm
 from django.db.models import Q
+
 
 class SugangLV(ListView):
     model = Sugang
@@ -37,14 +40,26 @@ class SearchFormView(FormView):
 
 class SugangCreateView(LoginRequiredMixin, CreateView):
     model = Sugang
-    # fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom']
-    fields = ['name']
+    #fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom']
+    fields = ('name', 'professor')
     success_url = reverse_lazy('sugang:index')
+
+"""
+# 여기 부분 추가하기
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = SugangInlineFormSet(self.request.POST, self.request.FILES)
+        else:
+            context['formset'] = SugangInlineFormSet()
+        return context
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+"""
 
 class SugangChangeLV(LoginRequiredMixin, ListView):
     template_name = 'sugang/sugang_change_list.html'
@@ -55,7 +70,7 @@ class SugangChangeLV(LoginRequiredMixin, ListView):
 
 class SugangUpdateView(OwnerOnlyMixin, UpdateView):
     model = Sugang
-    fields = ['gwamoknum', 'semester', 'name', 'professor', 'day', 'time', 'classroom']
+    fields = ['gwamok']
     success_url = reverse_lazy('sugang:index')
 
 
