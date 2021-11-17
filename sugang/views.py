@@ -38,8 +38,12 @@ class SearchFormView(FormView):
 
 class SugangCreateView(LoginRequiredMixin, CreateView):
     model = Sugang
-    fields = ('name', 'professor')
+    fields = ['name', 'professor']
     success_url = reverse_lazy('sugang:index')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class SugangChangeLV(LoginRequiredMixin, ListView):
@@ -51,7 +55,7 @@ class SugangChangeLV(LoginRequiredMixin, ListView):
 
 class SugangUpdateView(OwnerOnlyMixin, UpdateView):
     model = Sugang
-    fields = ['gwamok']
+    fields = ['name', 'professor']
     success_url = reverse_lazy('sugang:index')
 
 
