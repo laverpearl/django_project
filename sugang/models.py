@@ -2,12 +2,9 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-# from gwamok.models import Gwamok
-
 
 # Create your models here.
 class Sugang(models.Model):
-    #gwamok = models.CharField('GWAMOK', max_length=15, blank=False)
     name = models.CharField('NAME', max_length=100, blank=False)
     professor = models.CharField('PROFESSOR', max_length=100, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -24,7 +21,7 @@ class Sugang(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        ordering = ('name')
+        ordering = ('name','professor',)
 
     def get_absolute_url(self):
         return reverse('sugang:sugang_detail', args=(self.name,))

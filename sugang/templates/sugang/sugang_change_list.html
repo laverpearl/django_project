@@ -11,13 +11,8 @@
 
     <thead>
         <tr class="table-primary">
-            <th>Gwamoknum</th>
-            <th>Semester</th>
             <th>Name</th>
             <th>Professor</th>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Classroom</th>
             <th>Owner</th>
             <th>Delete</th>
         </tr>
@@ -26,13 +21,8 @@
     <tbody>
         {% for item in object_list %}
         <tr>
-            <td>{{ item.gwamoknum }}</td>
-            <td>{{ item.semester }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.professor }}</td>
-            <td>{{ item.day }}</td>
-            <td>{{ item.time }}</td>
-            <td>{{ item.classroom }}</td>
             <td>{{ item.owner }}</td>
             <td><a href="{% url 'sugang:delete' item.id %}">Delete</a></td>
         </tr>
